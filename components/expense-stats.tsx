@@ -7,10 +7,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useExpenseStore } from "@/lib/expense-store"
 import { getCategoryLabel } from "@/lib/utils"
+import { useTheme } from "./theme-provider"
 
 const COLORS = ["#3b82f6", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4", "#84cc16", "#ec4899", "#f97316"]
 export default function ExpenseStats() {
   const { expenses } = useExpenseStore()
+  const {theme} = useTheme()
 
   const totalExpenses = useMemo(() => {
     return expenses.reduce((sum, expense) => sum + Number.parseFloat(expense.amount.toString()), 0)
@@ -162,11 +164,11 @@ export default function ExpenseStats() {
               <div className="h-[300px]">
                 {monthlyData.some((data) => data.total > 0) ? (
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={monthlyData}>
+                    <BarChart data={monthlyData} >
                       <XAxis dataKey="month" />
                       <YAxis />
-                      <Tooltip formatter={(value) => `$${typeof value === 'number' ? value.toFixed(2) : Number(value).toFixed(2)}`} />
-                      <Bar dataKey="total" fill="var(--primary)" radius={[4, 4, 0, 0]} />
+                      <Tooltip contentStyle={{color:'black', backgroundColor:'white'}} itemStyle={{ color: 'black' }}  formatter={(value) => `$${typeof value === 'number' ? value.toFixed(2) : Number(value).toFixed(2)}`} />
+                      <Bar dataKey="total" fill={theme === 'dark' ? 'white' : '#333'} radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 ) : (
