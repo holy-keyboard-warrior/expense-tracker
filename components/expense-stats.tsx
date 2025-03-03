@@ -8,8 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useExpenseStore } from "@/lib/expense-store"
 import { getCategoryLabel } from "@/lib/utils"
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8", "#82CA9D", "#A4DE6C", "#D0ED57", "#FFC658"]
-
+const COLORS = ["#3b82f6", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4", "#84cc16", "#ec4899", "#f97316"]
 export default function ExpenseStats() {
   const { expenses } = useExpenseStore()
 
@@ -145,7 +144,7 @@ export default function ExpenseStats() {
                     </PieChart>
                   </ResponsiveContainer>
                 ) : (
-                  <div className="flex h-full items-center justify-center">
+                  <div className="flex h-full items-center justify-center bg-card">
                     <p className="text-muted-foreground">No data available</p>
                   </div>
                 )}
@@ -167,11 +166,11 @@ export default function ExpenseStats() {
                       <XAxis dataKey="month" />
                       <YAxis />
                       <Tooltip formatter={(value) => `$${typeof value === 'number' ? value.toFixed(2) : Number(value).toFixed(2)}`} />
-                      <Bar dataKey="total" fill="#3b82f6" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="total" fill="var(--primary)" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 ) : (
-                  <div className="flex h-full items-center justify-center">
+                  <div className="flex h-full items-center justify-center bg-card">
                     <p className="text-muted-foreground">No data available</p>
                   </div>
                 )}

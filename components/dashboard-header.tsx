@@ -6,6 +6,7 @@ import { LogOut, Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useToast } from "@/components/ui/use-toast"
+import { ThemeToggle } from "./theme-toggle"
 
 export default function DashboardHeader() {
   const router = useRouter()
@@ -29,7 +30,7 @@ export default function DashboardHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-10 border-b bg-white shadow-sm">
+    <header className="sticky top-0 z-10 border-b bg-background shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center">
           <h1 className="text-xl font-bold text-primary">ExpenseTracker</h1>
@@ -51,6 +52,9 @@ export default function DashboardHeader() {
                   <p className="font-medium">{user?.email}</p>
                 </div>
               </div>
+              <div className="flex justify-center">
+                  <ThemeToggle />
+                </div>
               <Button variant="destructive" onClick={handleLogout} className="w-full">
                 <LogOut className="mr-2 h-4 w-4" />
                 Logout
@@ -64,6 +68,7 @@ export default function DashboardHeader() {
           <p className="text-sm text-muted-foreground">
             <span className="font-medium text-foreground">{user?.email}</span>
           </p>
+          <ThemeToggle/>
           <Button variant="outline" size="sm" onClick={handleLogout}>
             <LogOut className="mr-2 h-4 w-4" />
             Logout

@@ -88,7 +88,7 @@ export default function ExpenseList() {
                   <TableCell className="hidden md:table-cell">
                     {format(new Date(expense.date), "MMM d, yyyy")}
                   </TableCell>
-                  <TableCell className="text-right">${Number.parseFloat(expense.amount).toFixed(2)}</TableCell>
+                  <TableCell className="text-right">${Number.parseFloat(expense.amount.toString()).toFixed(2)}</TableCell>
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
@@ -109,7 +109,7 @@ export default function ExpenseList() {
           </Table>
         </div>
       ) : (
-        <div className="flex h-[200px] items-center justify-center rounded-md border">
+        <div className="flex h-[200px] items-center justify-center rounded-md border bg-card">
           <p className="text-muted-foreground">No expenses found</p>
         </div>
       )}

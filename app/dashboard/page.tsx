@@ -38,7 +38,8 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-background">
+
       <DashboardHeader />
       <main className="container mx-auto p-4">
         <Tabs defaultValue="overview" className="w-full">
